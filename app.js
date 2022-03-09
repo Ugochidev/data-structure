@@ -58,17 +58,10 @@ router.patch("/updateUser/:id", (req, res) => {
   const { id } = req.params;
   const {firstName, lastName, age} = req.body
   const patchUser = users.find((user) => user.id === id);
-  if(firstName){
-    users.firstName = firstName;
-  }
-
-    if (lastName) {
-      users.lastName = lastName;
-    }
-    if (age) {
-      users.age = age;
-    }
-  res.send(patchUser);
+  if(firstName)users.firstName = firstName;
+  if (lastName)users.lastName = lastName;
+  if (age)users.age = age;
+  res.send(`user with the id ${id} has been updated`);
 });
 
 app.listen(2087, () => console.log("server is up and running"));
